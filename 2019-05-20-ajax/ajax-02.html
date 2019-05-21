@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax-02-jQuery</title>
+  <!-------引入jQuery函式庫------->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<h1></h1>
+<h4></h4>
+<ul></ul>
+</body>
+</html>
+<script>
+  //https://kktix.com/events.json
+  
+  //利用$.get()方法傳送請求並取得回應
+  $.get('https://kktix.com/events.json', function (result) {
+    
+    //在h1的標籤內寫入標題
+    document.querySelector("h1").innerHTML=result.title;
+
+    //在h4的標籤內寫入更新時間
+    document.querySelector("h4").innerHTML=result.updated;
+
+    //先建立一個空字串
+    var list="";
+
+    //以迴圈方式逐一處理物件entry的每個元素    
+    result.entry.forEach(element => {
+
+      //將元素內的標題文字放在<li></li>中，並累加每次的字串內容
+      list=list+`<li>${element.title}</li>`;
+      
+    });
+    
+    //在<ul>標籤內顯示累加後的字串內容
+    document.querySelector("ul").innerHTML=list;
+
+  }) 
+  
+  /* $.ajax(
+    {
+      url:'',
+      type:'',
+      success:,
+      error:,
+      complete:
+    }
+  ) */
+</script>

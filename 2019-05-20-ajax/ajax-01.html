@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax-01-XMLHttpRequest</title>
+</head>
+<body>
+  <h1></h1>
+  <h4></h4>
+  <ul></ul>
+</body>
+</html>
+<script>
+//https://kktix.com/events.json
+
+//宣告一個XMLHttpRequest物件
+var xhr=new XMLHttpRequest
+
+//將請求服務的網址及方法填入open()函式中
+xhr.open("GET","https://kktix.com/events.json",true);
+
+//設定請求服務時要傳送的資料及完成後要做的事
+xhr.onload=function(){
+
+  //設定要取得的內容類型
+  var type=xhr.getResponseHeader("Content-Type");
+
+  //取得文字型態的回應內容
+  var response=xhr.responseText;
+
+  //以json的格式解析取得的內容
+  var res=JSON.parse(response);
+  
+  //在h1的標籤內寫入標題
+  document.querySelector("h1").innerHTML=res.title;
+
+  //在h4的標籤內寫入更新時間
+  document.querySelector("h4").innerHTML=res.updated;
+
+  //先建立一個空字串
+  var list="";
+
+  //以迴圈方式逐一處理物件entry的每個元素
+  res.entry.forEach(function(element){
+
+    //將元素內的標題文字放在<li></li>中，並累加每次的字串內容
+    list=list+`<li>${element.title}</li>`; 
+
+  });
+
+  //在<ul>標籤內顯示累加後的字串內容
+  document.querySelector("ul").innerHTML=list;
+}
+
+//傳送請求
+xhr.send();
+
+
+</script>

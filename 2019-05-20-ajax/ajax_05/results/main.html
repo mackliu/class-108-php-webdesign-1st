@@ -1,0 +1,44 @@
+<div class="main">
+  <div class="news br">
+    <h1>最新消息</h1>
+    <table>
+      <tr>
+        <th>主題</th>
+        <th>發布日期</th>
+      </tr>
+      <tr>
+        <td><img src="./images/0201.png">公告全國技能競賽相關事宜</td>
+        <td>2011/11/30</td>
+      </tr>
+      <tr>
+        <td><img src="./images/0201.png">公告即測即評及發證相關事宜</td>
+        <td>2011/11/30</td>
+      </tr>
+      <tr>
+        <td><img src="./images/0201.png">公告網頁設計修題相關事宜</td>
+        <td>2011/11/30</td>
+      </tr>
+      <tr>
+        <td><img src="./images/0201.png">公告網路架設應檢相關事宜</td>
+        <td>2011/11/30</td>
+      </tr>
+    </table>
+  </div>
+  <div class="photos br">
+    <div class="big">
+      <img src="./images/0202A.png" alt="">
+    </div>
+    <div class="icons">
+      <div><img src="./images/0202A.png" alt=""><br>第30屆倫敦奧運</div>
+      <div><img src="./images/0203A.png" alt=""><br>許淑淨奪舉重銀牌</div>
+      <div><img src="./images/0204A.png" alt=""><br>第26屆深圳世大運</div>
+      <div><img src="./images/0205A.png" alt=""><br>第27屆喀山世大運</div>
+    </div>
+  </div>
+</div>
+<script>
+
+$('.icons img').click(function(){
+  $('.big').html("<img src='"+$(this).attr('src')+"'>")
+})
+</script>
